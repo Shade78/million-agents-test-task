@@ -1,0 +1,38 @@
+.node {
+  margin-left: 20px;
+  padding: 5px 0;
+  width: fit-content;
+
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.node-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+
+  &.deleted {
+    background-color: gray;
+  }
+}
+
+.toggle {
+  cursor: pointer;
+  width: 20px;
+  text-align: center;
+}
+
+.node-text {
+  flex: 1;
+}
+
+.children {
+  margin-left: 20px;
+}
+
+button {
+  padding: 5px 10px;
+  cursor: pointer;
+}

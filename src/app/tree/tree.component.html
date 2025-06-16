@@ -1,0 +1,33 @@
+@for (node of nodesSignal(); track node.id) {
+<div class="node">
+  <div class="node-content" [class.deleted]="node.is_deleted">
+    @if (node.children.length > 0) {
+    <span class="toggle" (click)="toggleNode(node)">
+      {{ node.isExpanded ? "↑" : "↓" }}
+    </span>
+    } @else {
+    <span class="toggle placeholder"></span>
+    }
+    <span class="node-text">
+      @if (showId) { ID: {{ node.id }} - }
+      {{ node.title }}
+      @if (isExpandAllButton && node.children.length > 0) { ({{
+        node.children.length
+      }}) }
+    </span>
+    <button (click)="handleNodeClick(node)">
+      {{ isExpandAllButton ? "Раскрыть все" : "Нажать" }}
+    </button>
+  </div>
+
+  @if (node.isExpanded && node.children.length > 0) {
+  <div class="children">
+    <app-tree
+      [children]="node.children"
+      [showId]="showId"
+      [isExpandAllButton]="isExpandAllButton"
+    ></app-tree>
+  </div>
+  }
+</div>
+}
